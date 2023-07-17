@@ -1,4 +1,4 @@
-package org.example.controller;
+package org.example.order.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,5 +30,15 @@ public class OrderController {
     public String orderNacosGeneralCall(){
         String stockMsg = restTemplate.getForObject("http://stock-server/stock/stockGeneralCall", String.class);
         return "nacos服务订单order接口调用--" + stockMsg;
+    }
+
+    /**
+     * 使用ribbon代码配置负载均衡策略
+     * @return String
+     */
+    @RequestMapping("/orderRibbonCall")
+    public String orderRibbonCall(){
+        String stockMsg = restTemplate.getForObject("http://stock-server/stock/stockRibbonCall", String.class);
+        return "ribbon订单order接口调用--" + stockMsg;
     }
 }
