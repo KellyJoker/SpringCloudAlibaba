@@ -27,4 +27,13 @@ public class StockController {
     public String stockRibbonCall(){
         return "ribbon负载均衡--" + port;
     }
+
+    /**
+     * feign调用
+     * @return String
+     */
+    @RequestMapping("/stockFeignCall")
+    public String stockFeignCall(){
+        return "stock接口feign调用！";
+    }
 }

@@ -1,5 +1,6 @@
 package org.example.order.controller;
 
+import org.example.order.feign.StockFeignService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,6 +11,8 @@ import org.springframework.web.client.RestTemplate;
 public class OrderController {
     @Autowired
     RestTemplate restTemplate;
+    @Autowired
+    StockFeignService stockFeignService;
 
     /**
      * 普通接口调用，通过RestTemplate调用
@@ -40,5 +43,15 @@ public class OrderController {
     public String orderRibbonCall(){
         String stockMsg = restTemplate.getForObject("http://stock-server/stock/stockRibbonCall", String.class);
         return "ribbon订单order接口调用--" + stockMsg;
+    }
+
+    /**
+     * 使用feign优雅的调用外部接口
+     * @return String
+     */
+    @RequestMapping("/orderFeignCall")
+    public String orderFeignCall(){
+        String feignMsg = stockFeignService.stockFeignCall();
+        return "feign订单order接口调用--" + feignMsg;
     }
 }
