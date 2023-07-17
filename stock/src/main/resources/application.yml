@@ -1,2 +1,12 @@
 server:
   port: 8082
+spring:
+  application:
+    name: stock-server    # 配置 Nacos server 的地址
+  cloud:
+    nacos:
+      server-addr: 127.0.0.1:8848   # nacos服务器IP和端口号
+      discovery:
+        username: nacos
+        password: nacos
+        namespace: public

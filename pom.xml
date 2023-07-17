@@ -64,7 +64,6 @@
                 <scope>import</scope>
             </dependency>
 
-
             <!--Spring Cloud的版本管理-->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
