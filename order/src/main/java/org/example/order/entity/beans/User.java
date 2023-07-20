@@ -1,4 +1,4 @@
-package org.example.order.beans;
+package org.example.order.entity.beans;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

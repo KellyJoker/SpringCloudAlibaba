@@ -1,6 +1,7 @@
 package org.example.order;
 
 import org.example.ribbon.RibbonRuleConfig;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -19,6 +20,7 @@ import org.springframework.web.client.RestTemplate;
         // 可以指定多个 @RibbonClient
 })*/
 @EnableFeignClients //⚠️若使用feign调用，则需要调用端在启动类上添加 @EnableFeignClients 注解
+@MapperScan("org.example.order.mapper") //mybatis包扫描路径
 public class OrderApplication {
     public static void main(String[] args) {
         SpringApplication.run(OrderApplication.class);
