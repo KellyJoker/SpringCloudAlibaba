@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.example.order.mapper.UserMapper">
-  <resultMap id=" " type="org.example.order.entity.pojo.User">
+  <resultMap id="BaseResultMap" type="org.example.order.entity.pojo.UserPO">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="age" jdbcType="INTEGER" property="age" />
@@ -11,13 +11,13 @@
     delete from user_info
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="org.example.order.entity.pojo.User">
-    insert into user_info (id, username, age, 
+  <insert id="insert" parameterType="org.example.order.entity.pojo.UserPO">
+    insert into user_info (username, age,
       gender)
-    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, 
+    values (#{username,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER},
       #{gender,jdbcType=INTEGER})
   </insert>
-  <update id="updateByPrimaryKey" parameterType="org.example.order.entity.pojo.User">
+  <update id="updateByPrimaryKey" parameterType="org.example.order.entity.pojo.UserPO">
     update user_info
     set username = #{username,jdbcType=VARCHAR},
       age = #{age,jdbcType=INTEGER},
@@ -28,9 +28,5 @@
     select id, username, age, gender
     from user_info
     where id = #{id,jdbcType=INTEGER}
-  </select>
-  <select id="selectAll" resultMap="BaseResultMap">
-    select id, username, age, gender
-    from user_info
   </select>
 </mapper>

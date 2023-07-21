@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8081
 # yml配置负载均衡策略
 stock-server: # 被调用的微服务名
   ribbon:

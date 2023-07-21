@@ -1,6 +1,7 @@
 package org.example.order.entity.pojo;
 
-public class User {
+public class UserPO {
+
     private Integer id;
 
     private String username;
