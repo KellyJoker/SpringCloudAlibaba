@@ -182,6 +182,17 @@ public class CustomApplicationContext {
                     absolutePath = absolutePath.substring(absolutePath.indexOf("com"), absolutePath.indexOf(".class"))
                             .replace("/", ".");
                     try {
+                        /**
+                         * 一般我们需要获取一个类的注解等信息，需要将类加载到JVM中来获取，这样非常不方便，而且消耗性能。
+                         * ASM技术就是直接读取字节码文件，解析字节码文件后拿到相对应的类信息（因为字节码文件是有固定格式的，可以根据特定
+                         * 的方式读取字节码文件中的内容），这样更加快捷方便，因为我们只需要解析class文件即可，无须加载class文件到JVM中。
+                         * 在Spring中需要去解析类的信息，比如类名、类中的方法、类上的注解，这些都可以称之为类的元数据，所以Spring中对类
+                         * 的元数据做了抽象，并提供了一些工具类（MetadataReader、ClassMetadata、AnnotationMetadata）。
+                         * MetadataReader表示类的元数据读取器，默认实现类为SimpleMetadataReader。SimpleMetadataReader去解析类
+                         * 时，使用的ASM技术。
+                         * 为什么要使用ASM技术？Spring启动的时候需要去扫描，如果指定的包路径比较宽泛，那么扫描的类是非常多的，那如果在
+                         * Spring启动时就把这些类全部加载进JVM了，这样不太好，所以使用了ASM技术。
+                         */
                         Class<?> clazz = classLoader.loadClass(absolutePath);
                         //判断该bean是否有@Component等注解
                         if (clazz.isAnnotationPresent(Component.class)) {

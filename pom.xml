@@ -12,6 +12,7 @@
         <module>stock</module>
         <module>gateway</module>
         <module>springboot_mybatisplus</module>
+        <module>spring</module>
     </modules>
     <name>SpringCloudAlibaba</name>
     <description>Spring Cloud Alibaba</description>
