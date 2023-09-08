@@ -9,7 +9,6 @@ import org.springframework.beans.SimpleTypeConverter;
 import org.springframework.beans.factory.support.AbstractBeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotatedBeanDefinitionReader;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ClassPathBeanDefinitionScanner;
@@ -31,7 +30,7 @@ import java.util.Map;
  **/
 public class Test {
     public static void main(String[] args) throws IOException {
-        metadataReaderTest();
+        messageSourceTest();
     }
 
     /**
@@ -161,7 +160,7 @@ public class Test {
      *      AnnotationConfigApplicationContext
      *      ClassPathXmlApplicationContext
      */
-    public static void MessageSourceTest(){
+    public static void messageSourceTest(){
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         //注意⚠️：配置文件必须是 messages开头，否则会报错
         String message_en = context.getMessage("test", null, new Locale("en"));
@@ -169,6 +168,8 @@ public class Test {
 
         System.out.println(message_en);
         System.out.println(message_cn);
+
+        context.close();
     }
 
     //BeanDefinitionReader
