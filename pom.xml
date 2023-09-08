@@ -13,6 +13,7 @@
         <module>gateway</module>
         <module>springboot_mybatisplus</module>
         <module>spring</module>
+        <module>spring_boot_redis</module>
     </modules>
     <name>SpringCloudAlibaba</name>
     <description>Spring Cloud Alibaba</description>
