@@ -163,6 +163,13 @@ public class RedissonController {
         return "end";
     }
 
+    /**
+     * 分布式锁优化：
+     *      像这种扣减库存的业务逻辑，我们可以设计分段锁来提高效率。
+     *      比如可以将商品库存分为几等份加载到内存，分段加锁进行库存扣减。
+     *      这样可以大大提高并发效率
+     * @return
+     */
     @ApiOperation("分布式扣减库存--添加分布式锁--redisson")
     @GetMapping("/deductStockAddLock")
     public String deductStockAddLock(){
