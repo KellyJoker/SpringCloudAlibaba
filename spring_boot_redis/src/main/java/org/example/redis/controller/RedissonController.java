@@ -30,7 +30,7 @@ public class RedissonController {
     @Autowired
     private StringRedisTemplate redisTemplate;
 
-    private static final Logger logger = LoggerFactory.getLogger(SentinelController.class);
+    private static final Logger logger = LoggerFactory.getLogger(RedissonController.class);
 
     @ApiOperation("分布式扣减库存--未加分布式锁")
     @GetMapping("/deductStock")
