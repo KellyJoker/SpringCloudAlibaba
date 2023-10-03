@@ -16,6 +16,8 @@
         <module>spring_boot_redis</module>
         <module>BIO</module>
         <module>netty</module>
+        <module>nio</module>
+        <module>zk_demo</module>
     </modules>
     <name>SpringCloudAlibaba</name>
     <description>Spring Cloud Alibaba</description>
